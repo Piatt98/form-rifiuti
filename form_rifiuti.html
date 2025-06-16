@@ -11,7 +11,7 @@
 </head>
 <body>
   <h2>Invia Segnalazione Raccolta Rifiuti</h2>
-  <form id="rifiutiForm" method="POST" enctype="multipart/form-data" action="https://importer.piatt.monster/webhook-test/rifiuti-submit">
+  <form id="rifiutiForm" method="POST" enctype="multipart/form-data" action="https://importer.piatt.monster/webhook/rifiuti-submit">
     <label for="posizione">Posizione (GPS o mappa):</label><br>
     <input type="text" id="posizione" name="Posizione" readonly><br>
     <div id="map"></div><br>
@@ -19,11 +19,8 @@
     <label for="descrizione">Descrizione manuale:</label><br>
     <textarea id="descrizione" name="Descrizione" rows="4" cols="50" placeholder="Scrivi dettagli aggiuntivi qui..."></textarea><br><br>
 
-    <label for="immagini">Foto:</label><br>
-    <input type="file" id="immagini" name="immagini" multiple accept="image/*"><br><br>
-
-    <label for="video">Video:</label><br>
-    <input type="file" id="video" name="video" multiple accept="video/*"><br><br>
+    <label for="file1">Foto e/o Video:</label><br>
+    <input type="file" id="file1" name="file1" multiple accept="image/*,video/*"><br><br>
 
     <input type="submit" value="Invia">
   </form>
@@ -31,7 +28,6 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     let map, marker;
-
     function setPosition(lat, lng) {
       document.getElementById("posizione").value = lat.toFixed(5) + "," + lng.toFixed(5);
       if (marker) {
